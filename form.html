@@ -1,0 +1,73 @@
+<!-- Cheng Chi -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="assign1.css"/>
+        <title>form</title>
+    </head>
+    <body>
+        <h1>My Form</h1>
+        <nav>
+            <a href="calendar.html">calender</a> 
+            <a href="form.html">form</a> 
+        </nav>
+        <div>
+        <form method="get" action="http://www-users.cselabs.umn.edu/~tulaj001/form_handler.php" onsubmit="return checkForm()">
+            <p>
+                <label class="label">Event Name</label>
+                <input name="eventname" type="text" id="namecheck" required/>
+            </p>
+            <p>
+                <label class="label">StartTime</label>
+                <input name="starttime" type="time" required/>
+            </p>
+            <p>
+                <label class="label">End Time</label>
+                <input name="endtime" type="time" required/>
+            </p>
+            <p>
+                <label class="label">Location</label>
+                <input name="location" type="text" id="locationcheck" required/>
+            </p>
+            <p><label class="label">Day of the Week</label>
+                <select name="day" required>
+                    <option label="Choose"></option>
+                    <option value="Mon">Monday</option>
+                    <option value="Tue">Tuesday</option>
+                    <option value="Wed">Wednesday</option>
+                    <option value="Thu">Thursday</option>
+                    <option value="Fri">Friday</option>
+                </select>
+            </p>
+            <p><label class="none"></label>
+                <input class="button" type="submit" value="Submit"/>
+            </p>
+        </form>
+        <p>This page has been tested in Chrome and Firefox.</p>
+        </div>
+        
+        <script>
+            function checkForm(){
+                //e.preventDefault();
+                //alert("Event name must be alphanumeric.");
+                var name = document.getElementById("namecheck").value;
+                var loca = document.getElementById("locationcheck").value;
+                
+                if(!name.match(/^[0-9a-z]+$/i) && !loca.match(/^[0-9a-z]+$/i)){
+                    alert("Event name and location must be alphanumeric.");
+                    return false;
+                }else if(!name.match(/^[0-9a-z]+$/i)){
+                    alert("Event name must be alphanumeric.");
+                    return false;
+                }else if(!loca.match(/^[0-9a-z]+$/i)){
+                    alert("Location must be alphanumeric.");
+                    return false;
+                }
+                return true;
+            }
+        
+        </script>
+    </body>
+</html>

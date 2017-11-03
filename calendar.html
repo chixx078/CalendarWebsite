@@ -1,0 +1,383 @@
+<!-- Cheng Chi -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="assign1.css"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0 user-scalable=no">
+        <title>Calendar</title>
+
+
+
+    </head>
+
+    <body onload="myDay()">
+        <h1>My Calender</h1>
+        <nav>
+            <a href="calendar.html">calender</a>
+            <a href="form.html">form</a>
+        </nav>
+
+        <div class="scroll-left" >
+            <p id="scroll"></p>
+        </div>
+
+
+        <div id="tweeter">
+        <a class="twitter-timeline"  href="https://twitter.com/hashtag/UMN" data-widget-id="920357924916129792">#UMN Tweets</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+
+
+        <div>
+        <table id="tb" class="calender">
+          <tr class="odd">
+            <td><span class="day" id="mon">Mon</span></td>
+            <td onclick="keller()">
+                <p><span class="time" id="monTime">10:00-10:45AM </span></p>
+                <p class="loc">CSCI 3123-KH 320 </p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+            <td onclick="shepherdLabs()">
+                <p><span class="time">1:00-2:00PM </span></p>
+                <p class="loc">Meeting-Shepherd Labs 587 </p>
+                <p class="img"><img src="shepherdLabs.jpeg" alt="Shepherd Labs"/><p>
+
+            </td>
+            <td onclick="coffman()">
+                <p><span class="time">3:00-4:00PM </span></p>
+                <p class="loc">Bowling-<a href="http://umn.edu">Coffman </a></p>
+                <p class="img"><img src="coffman.jpeg" alt="Coffman"/><p>
+
+            </td>
+          </tr>
+
+          <tr id="tue" class="even">
+            <td><span class="day">Tue</span></td>
+            <td onclick="keller()">
+                <p><span class="time">8:00-8:45AM</span></p>
+                <p class="loc">CSCI 2034-KH 322 </p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+            <td onclick="keller()">
+                <p><span class="time">11:00-11:45AM</span></p>
+                <p class="loc">CSCI 4131-KH 321</p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+            <td>
+                <p>-</p>
+            </td>
+          </tr>
+
+          <tr class="odd">
+            <td><span class="day">Wed</span></td>
+            <td onclick="keller()">
+                <p><span class="time">10:00-10:45AM</span></p>
+                <p class="loc">CSCI 3123-KH 320</p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+            <td onclick="walter()">
+                <p><span class="time">2:00-3:00PM</span></p>
+                <p class="loc">Group Meeting-Walter</p>
+                <p class="img"><img src="walter.jpeg" alt="Walter Library"/><p>
+            </td>
+            <td onclick="keller()">
+                <p><span class="time">4:00-5:00PM</span></p>
+                <p class="loc">Offic hours-KH 410</p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+          </tr>
+
+          <tr class="even">
+            <td><span class="day">Thu</span></td>
+            <td onclick="keller()">
+                <p><span class="time">8:00-8:45AM</span></p>
+                <p class="loc">CSCI 2034-KH 322</p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+            <td onclick="keller()">
+                <p><span class="time">11:00-11:45AM</span></p>
+                <p class="loc">CSCI 4131-KH 321</p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+            <td>
+                <p>-</p>
+            </td>
+          </tr>
+
+          <tr class="odd">
+            <td><span class="day">Fri</span></td>
+            <td onclick="keller()">
+                <p><span class="time">10:00-10:45AM</span></p>
+                <p class="loc">CSCI 3123-KH 320</p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+            <td onclick="recCenter()">
+                <p><span class="time">3:00-4:00PM</span></p>
+                <p class="loc">Swimming-<a href="http://recwell.umn.edu/">Rec Center</a></p>
+                <p class="img"><img src="reccenter.jpg" alt="Rec Center"/><p>
+            </td>
+            <td onclick="keller()">
+                <p><span class="time">5:00-6:00PM</span></p>
+                <p class="loc">Office Hour-KH 410</p>
+                <p class="img"><img src="keller.jpg" alt="Keller Hall"/><p>
+            </td>
+          </tr>
+        </table>
+        </div>
+
+        <div>
+          <form>
+            <p>
+                <label class="label">Radius(0-700):</label>
+                <input name="radius" type="text" id="radius" required/>
+                <input type="submit" value="Find Nearby Restaurants" onclick="findRest()"/>
+            </p>
+            <p>
+                <label class="label">Destination:</label>
+                <input name="radius" type="text" id="destination" required/>
+                <input type="submit" value="Get Directions" onclick="direction()"/>
+            </p>
+            <p>
+              <label>Walking<input type="radio" name="travelMode" value="WALKING" onclick="direction()"></label>
+              <label>Driving<input type="radio" name="travelMode" value="DRIVING" onclick="direction()" checked></label>
+              <label>Transit<input type="radio" name="travelMode" value="TRANSIT" onclick="direction()"></label>
+              <label>Bycycle<input type="radio" name="travelMode" value="BICYCLING" onclick="direction()"></label>
+
+            </p>
+          </form>
+        </div>
+
+
+
+        <div id="map"></div>
+        <div id="right_panel"></div>
+        
+        <div><p>This page has been tested in Chrome and Firefox.</p></div>
+
+        <script>
+            function myDay(){
+                var text = "";
+                var day = new Date().getDay();
+                var table = document.getElementById("tb");
+                var row_len = table.rows.length;
+                var cell_num = table.rows.item(day-1).cells;
+                var cell_len = cell_num.length;
+
+
+                for( var i=1; i < cell_len; i++){
+                    var p_len = cell_num.item(i).getElementsByTagName("p").length;
+                    for( var j=0; j< p_len; j++){
+                        text += cell_num.item(i).getElementsByTagName("p").item(j).innerText + "--- ";
+                    }
+                }
+                document.getElementById("scroll").innerHTML="Events for the Day ------ "+text;
+            }
+
+            function keller(){
+                document.getElementById("img").setAttribute("src","keller.jpg")
+            }
+
+//map functions
+            var service;
+            var map;
+            var myLatLng;
+            var infoWindow;
+            var geocoder;
+            var directionsDisplay;
+            var directionsService;
+            var marker;
+            var current;
+
+          	function initMap() {
+          		myLatLng = {lat: 44.977276, lng: -93.232266};
+          		/* Create a map and place it on the div */
+          		 map = new google.maps.Map(document.getElementById('map'), {
+          				zoom: 14,
+          				center: myLatLng
+          			});
+
+                directionsDisplay = new google.maps.DirectionsRenderer;
+                directionsService = new google.maps.DirectionsService;
+
+                directionsDisplay.setPanel(document.getElementById("right_panel"));
+                directionsDisplay.setMap(map);
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(setPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+
+              geocoder = new google.maps.Geocoder(); // Create a geocoder object
+
+          		var location1 = "Shepherd Labs, MN ";
+              var event1 = "Meeting";
+              var img1 = "shepherdLabs.jpeg"
+
+              var location2 = "Keller Hall, MN ";
+              var event2 = "CSCI 2034 +</br> + CSCI 3121 +</br> + CSCI 4131";
+              var img2 = "keller.jpg";
+
+              var location3 = "Walter library, MN ";
+              var event3 = "Group meeting";
+              var img3 = "walter.jpeg";
+
+              var location4 = "Rec Center, MN ";
+              var event4 = "Swimming";
+              var img4 = "reccenter.jpg";
+
+              var location5 = "Coffman, MN ";
+              var event5 = "Bowling";
+              var img5 = "coffman.jpeg";
+
+          		geocodeAddress(geocoder, map, location1, event1, img1);
+              geocodeAddress(geocoder, map, location2, event2, img2);
+              geocodeAddress(geocoder, map, location3, event3, img3);
+              geocodeAddress(geocoder, map, location4, event4, img4);
+              geocodeAddress(geocoder, map, location5, event5, img5);
+
+          	}  // end init map function definition
+
+            function setPosition(position) {
+              current = {lat: position.coords.latitude, lng:position.coords.longitude};
+            }
+
+            function geocodeAddress(geocoder, resultsMap, address, eventx, img) {
+
+          		geocoder.geocode({'address': address}, function(results, status) {
+          			if (status === google.maps.GeocoderStatus.OK) {
+          					resultsMap.setCenter(results[0].geometry.location);
+          					marker = new google.maps.Marker({
+          								map: resultsMap,
+          								position: results[0].geometry.location,
+          								title:address
+          								});
+          					infoWindow = new google.maps.InfoWindow({
+    								      content: address
+    								});
+
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infoWindow.setContent(address+"</br>"+eventx);
+                        infoWindow.open(map, this);
+                    });
+                    google.maps.event.addListener(marker, 'mouseover', function() {
+                        this.setIcon(img);
+                    });
+                    google.maps.event.addListener(marker, 'mouseout', function() {
+                        this.setIcon();
+                    });
+          			} else {
+          					alert('Geocode was not successful for the following reason: ' + status);
+          			} //end if-then-else
+          		}); // end call to geocoder.geocode function
+          	} // end geocodeAddress function
+
+          	// Function to return an anonymous function that will be called when the rmarker created in the
+              // geocodeAddress function is clicked
+          	function createWindow(rmap, rinfowindow, rmarker){
+                        return function(){
+          				rinfowindow.open(rmap, rmarker);
+                      }
+              }//end create (info) window
+
+
+            function building(myLatlng, courseName)
+            {
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: myLatlng,
+                    //animation: google.maps.Animation.BOUNCE,
+                    title: 'UMN Pin'
+                });
+
+                infoWindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(marker, 'click', function() {
+                    infoWindow.setContent(courseName);
+                    infoWindow.open(map, this);
+                });
+            }
+
+            function direction() {
+
+              var radios = document.getElementsByName('travelMode');
+              var mode;
+              for (var i = 0, length = radios.length; i < length; i++) {
+                  if (radios[i].checked) {
+                    mode = radios[i].value;
+                    break;
+                  }
+              }
+
+              calculateAndDisplayRoute(directionsService, directionsDisplay, mode);
+            }
+
+            function calculateAndDisplayRoute(directionsService, directionsDisplay, mode) {
+
+              var end = document.getElementById('destination').value;
+
+              directionsService.route({
+                origin: current,
+                destination: end,
+                travelMode: mode
+              }, function(response, status) {
+                if (status == 'OK') {
+                  directionsDisplay.setDirections({route: []});
+                  directionsDisplay.setDirections(response);
+                } else {
+                  window.alert('Directions request failed due to ' + status);
+                }
+              });
+            }
+
+            function findRest(){
+              var r = document.getElementById('radius').value;
+                
+                if(!r.match(/^[0-9]+$/i)){
+                    alert("Radius must be a numeric value.");
+                    return false;
+                }else if(r<0 || r>700){
+                    alert("Radius out of range");
+                }
+
+              var request = {
+                location: myLatLng,
+                radius: r,
+                type: ['restaurant']
+              };
+
+              service = new google.maps.places.PlacesService(map);
+              service.nearbySearch(request, callback);
+            }
+
+            function callback(results, status) {
+              if (status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                  var place = results[i];
+                  createMarker(results[i]);
+                }
+              }
+            }
+
+            function createMarker(place) {
+              var placeLoc = place.geometry.location;
+              var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+
+              });
+
+              google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.setContent(place.name + "</br>" + place.vicinity);
+                infoWindow.open(map, this);
+              });
+            }
+
+
+
+
+        </script><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6ahJ9lURyHIw6pQ-hdR2roT-l0mIM8Qc&libraries=places,visualization&callback=initMap"
+    async defer></script>
+    </body>
+</html>
